@@ -17,3 +17,5 @@ const todo1 = project1.getList()[0];
 console.log(todo1.getDeadlineDate());
 todo1.setDeadlineDate(new Date(2023, 0, 18));
 console.log(todo1.getDeadlineDate());
+todo1.setTitle("aaaaaaaaaaaaaaaaaaaaa");
+console.log(project1.getList()[0].getTitle());

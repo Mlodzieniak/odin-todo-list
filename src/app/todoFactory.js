@@ -1,5 +1,6 @@
 import formatISO9075 from "date-fns/formatISO9075";
 import isDateValid from "./utils/isDateValid";
+import isStringLengthValid from "./utils/isStringLenghtValid";
 
 const todoFactory = () => {
   let title = "Todo";
@@ -28,12 +29,16 @@ const todoFactory = () => {
   ];
   return {
     setTitle(newTitle) {
-      title = newTitle;
+      if (isStringLengthValid(newTitle, 30)) {
+        title = newTitle;
+      }
     },
     getTitle: () => title,
 
     setDescription(newDesc) {
-      description = newDesc;
+      if (isStringLengthValid(newDesc, 500)) {
+        description = newDesc;
+      }
     },
     getDescription: () => description,
 
