@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -24,8 +24,8 @@ module.exports = {
       title: "ToooDo? Or not ToDo?",
       template: "./index.html",
       filename: "index.html",
-      favicon: "./src/app/images/cake.svg",
     }),
+    new FaviconsWebpackPlugin("./src/app/images/cake.svg"),
   ],
   module: {
     rules: [

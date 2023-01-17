@@ -12,7 +12,11 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "plugins": [
+        "prettier"
+    ],
     "rules": {
+        "prettier/prettier": "error",
         "quotes": [
             "error",
             "double"
