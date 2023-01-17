@@ -1,8 +1,8 @@
 import formatISO9075 from "date-fns/formatISO9075";
-import getKeyByValue from "./utils/getKeyByValue";
+import isDateValid from "./utils/isDateValid";
 
 const todoFactory = () => {
-  let title = "Project";
+  let title = "Todo";
   let description = "";
   const creationDate = formatISO9075(new Date());
   let deadlineDate = null;
@@ -40,7 +40,7 @@ const todoFactory = () => {
     getCreationDate: () => creationDate,
 
     setDeadlineDate(newDeadLineDate) {
-      deadlineDate = newDeadLineDate;
+      deadlineDate = isDateValid(newDeadLineDate);
     },
     getDeadlineDate: () => deadlineDate,
     setPriority(priorityValue) {
