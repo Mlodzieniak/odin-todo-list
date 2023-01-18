@@ -1,18 +1,29 @@
+import formatISO9075 from "date-fns/formatISO9075";
 import todoFactory from "./todoFactory";
+import isStringLengthValid from "./utils/isStringLenghtValid";
 
 const projectFactory = () => {
   let projectName = "Project";
-  const list = [];
+  const creationDate = formatISO9075(new Date());
+  // const list = [];
+  const todoList = {
+    todo: [],
+    doing: [],
+    done: [],
+  };
   return {
     add() {
-      list.push(todoFactory());
+      todoList.todo.push(todoFactory());
     },
-    getList: () => list,
+    getList: () => todoList,
 
     setProjectName(newName) {
-      projectName = newName;
+      if (isStringLengthValid(newName, 30)) {
+        projectName = newName;
+      }
     },
     getProjectName: () => projectName,
+    getCreationDate: () => creationDate,
   };
 };
 export default projectFactory;

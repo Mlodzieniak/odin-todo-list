@@ -1,13 +1,14 @@
 import formatISO9075 from "date-fns/formatISO9075";
 import isDateValid from "./utils/isDateValid";
 import isStringLengthValid from "./utils/isStringLenghtValid";
+import setPriority from "./setPriority";
 
 const todoFactory = () => {
   let title = "Todo";
   let description = "";
   const creationDate = formatISO9075(new Date());
   let deadlineDate = null;
-  const priority = [
+  const prioritys = [
     {
       isSelected: 1, // 0 - off, 1 - on
       value: 1,
@@ -33,30 +34,29 @@ const todoFactory = () => {
         title = newTitle;
       }
     },
-    getTitle: () => title,
-
     setDescription(newDesc) {
       if (isStringLengthValid(newDesc, 500)) {
         description = newDesc;
       }
     },
-    getDescription: () => description,
-
-    getCreationDate: () => creationDate,
-
     setDeadlineDate(newDeadLineDate) {
       deadlineDate = isDateValid(newDeadLineDate);
     },
-    getDeadlineDate: () => deadlineDate,
-    setPriority(priorityValue) {
-      priority.forEach((element) => {
+    setPriorityTo(priorityValue) {
+      prioritys.forEach((element) => {
         element.isSelected = 0;
         if (element.value === priorityValue) {
           element.isSelected = 1;
         }
       });
     },
-    getPriority: () => priority.find((element) => element.isSelected === 1),
+    getTitle: () => title,
+    getDescription: () => description,
+    getCreationDate: () => creationDate,
+    getDeadlineDate: () => deadlineDate,
+    getPrioritys: () => prioritys,
+    getSelectedPriority: () =>
+      prioritys.find((element) => element.isSelected === 1),
   };
 };
 export default todoFactory;

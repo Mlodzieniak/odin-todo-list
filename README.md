@@ -13,11 +13,16 @@ Project properties:
 -current state e.g.("7/12 completed" or "5 to complete")
 
 Todo's properties:
--Title
--description(optional)
--creation date
--deadline date
--priority (low, moderate, high, completed)
+-Title DONE
+-description DONE
+-creation date DONE
+-deadline date DONE
+-priority (low, moderate, high) DONE
 
 App stores Projects, Todo's and users as objects.
 All of them can be created with factories.
+
+A WIEC KAZDA STRUKTURA POTRZEBUJE UI?
+w UI importujemy functionfactory i pushujemy wszystkie 
+wyprodukowane obiekty do jednej array.
+importujemy również do UI wszsystkie funkcje zarządzajace np remove, add, change itp
