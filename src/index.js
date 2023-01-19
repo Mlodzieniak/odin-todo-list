@@ -38,3 +38,7 @@ projects[1].todoUI.setStatus(0, 1);
 projects[1].todoUI.setStatus(1, 2);
 console.log(projects[1].todoUI.getList()[0].getStatus());
 console.log(projects[1].todoUI.getList()[1].getStatus());
+console.log(projects[1].todoUI.getList());
+
+projects[1].todoUI.remove(0);
+console.log(projects[1].todoUI.getList());

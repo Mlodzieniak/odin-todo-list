@@ -1,5 +1,4 @@
 import projectFactory from "./projectFactory";
-import todoUI from "./todoUI";
 
 const projectsUI = () => {
   const projects = [];
