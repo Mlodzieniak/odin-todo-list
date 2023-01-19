@@ -20,6 +20,10 @@ document.querySelector("body").appendChild(domEle);
 // todo1.setTitle("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 projectsUI.add();
 projectsUI.add();
+projectsUI.add();
+projectsUI.add();
+projectsUI.add();
+
 console.log(projectsUI.getProjects);
 const projects = projectsUI.getProjects;
 projects[0].todoUI.add();
@@ -42,3 +46,6 @@ console.log(projects[1].todoUI.getList());
 
 projects[1].todoUI.remove(0);
 console.log(projects[1].todoUI.getList());
+console.log(projects);
+projectsUI.remove(2);
+console.log(projects);

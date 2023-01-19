@@ -1,4 +1,5 @@
 import projectFactory from "./projectFactory";
+import removeInstance from "./removeInstance";
 
 const projectsUI = () => {
   const projects = [];
@@ -6,9 +7,8 @@ const projectsUI = () => {
     add() {
       projects.push(projectFactory());
     },
-    remove(index) {
-      projects.splice(index, 1);
-    },
+    remove: (index) => removeInstance(projects, index),
+
     getProjects: projects,
   };
 };
