@@ -14,7 +14,7 @@ const projectFactory = () => {
     },
     getProjectName: () => projectName,
     getCreationDate: () => creationDate,
-    getTodoUI: todoUI(),
+    todoUI: todoUI(),
   };
 };
 export default projectFactory;

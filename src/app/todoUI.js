@@ -1,16 +1,15 @@
 import todoFactory from "./todoFactory";
+import setPriority from "./setPriority";
 
 const todoUI = () => {
-  const todoList = {
-    todo: [],
-    doing: [],
-    done: [],
-  };
+  const todoList = [];
   return {
     add() {
-      todoList.todo.push(todoFactory());
+      todoList.push(todoFactory());
     },
-    getList: () => todoList,
+    getList: () => [...todoList],
+    setPriority: (todoIndex, priorityIndex) =>
+      setPriority(todoList[todoIndex], priorityIndex),
   };
 };
 export default todoUI;

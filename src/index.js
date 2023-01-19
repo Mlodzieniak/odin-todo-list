@@ -1,6 +1,5 @@
 import "./main.css";
-import todoFactory from "./app/todoFactory";
-import projectFactory from "./app/projectFactory";
+
 import projectsUI from "./app/projectsUI";
 
 const domEle = document.createElement("div");
@@ -23,7 +22,15 @@ projectsUI.add();
 projectsUI.add();
 console.log(projectsUI.getProjects);
 const projects = projectsUI.getProjects;
-projects[0].getTodoUI.add();
-projects[0].getTodoUI.add();
-projects[0].getTodoUI.add();
-console.log(projects[0].getTodoUI.getList());
+projects[0].todoUI.add();
+projects[0].todoUI.add();
+projects[0].todoUI.add();
+console.log(projects[0].todoUI.getList());
+projects[1].todoUI.add();
+projects[1].todoUI.add();
+console.log(projects[0].todoUI.getList());
+console.log(projects[1].todoUI.getList());
+projects[1].todoUI.setPriority(0, 1);
+projects[1].todoUI.setPriority(1, 2);
+console.log(projects[1].todoUI.getList()[0].getPriority());
+console.log(projects[1].todoUI.getList()[1].getPriority());
