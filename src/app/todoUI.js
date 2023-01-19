@@ -1,7 +1,7 @@
-import todoFactory from "./todoFactory";
-import setPriority from "./setPriority";
-import setStatus from "./setStatus";
-import removeInstance from "./removeInstance";
+import todoFactory from "./utils/todoFactory";
+import setPriority from "./utils/setPriority";
+import setStatus from "./utils/setStatus";
+import removeInstance from "./utils/removeInstance";
 
 const todoUI = () => {
   const todoList = [];

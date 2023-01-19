@@ -1,6 +1,6 @@
 import formatISO9075 from "date-fns/formatISO9075";
-import isStringLengthValid from "./utils/isStringLenghtValid";
-import todoUI from "./todoUI";
+import isStringLengthValid from "./isStringLengthValid";
+import todoUI from "../todoUI";
 
 const projectFactory = () => {
   let projectName = "Project";

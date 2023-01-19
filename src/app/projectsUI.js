@@ -1,5 +1,5 @@
-import projectFactory from "./projectFactory";
-import removeInstance from "./removeInstance";
+import projectFactory from "./utils/projectFactory";
+import removeInstance from "./utils/removeInstance";
 
 const projectsUI = () => {
   const projects = [];

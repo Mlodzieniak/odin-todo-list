@@ -22,7 +22,4 @@ Todo's properties:
 App stores Projects, Todo's and users as objects.
 All of them can be created with factories.
 
-A WIEC KAZDA STRUKTURA POTRZEBUJE UI?
-w UI importujemy functionfactory i pushujemy wszystkie 
-wyprodukowane obiekty do jednej array.
-importujemy również do UI wszsystkie funkcje zarządzajace np remove, add, change itp
+Być może wystarczy zrobić dom funkcje która zamiast dodawać divy będzie dodawała tyle divów ile jest pozycji w array 'projects'
