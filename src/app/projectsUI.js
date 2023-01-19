@@ -1,4 +1,5 @@
 import projectFactory from "./projectFactory";
+import todoUI from "./todoUI";
 
 const projectsUI = () => {
   const projects = [];
@@ -9,9 +10,7 @@ const projectsUI = () => {
     remove(index) {
       projects.splice(index, 1);
     },
-    getProjects: () => {
-      console.log(projects);
-    },
+    getProjects: projects,
   };
 };
 export default projectsUI();
