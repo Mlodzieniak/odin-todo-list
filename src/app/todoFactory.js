@@ -7,8 +7,14 @@ const todoFactory = () => {
   let description = "";
   const creationDate = formatISO9075(new Date());
   let deadlineDate = null;
-  const priority = [];
-  const status = [];
+  const priority = {
+    color: "blue",
+    toString: "Low",
+  };
+  const status = {
+    color: "blue",
+    toString: "Todo",
+  };
   return {
     setTitle(newTitle) {
       if (isStringLengthValid(newTitle, 30)) {

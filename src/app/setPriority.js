@@ -16,8 +16,9 @@ function setPriority(todo, priorityIndex) {
 
   if (priorityIndex > -1 && priorityIndex < 3) {
     const todoPriority = todo.getPriority();
-    todoPriority.length = 0;
-    todoPriority.push(priorityList[priorityIndex]);
+    todoPriority.color = priorityList[priorityIndex].color;
+    todoPriority.toString = priorityList[priorityIndex].toString;
+    // todoPriority.push(priorityList[priorityIndex]);
   }
 }
 export default setPriority;

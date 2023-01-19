@@ -16,8 +16,8 @@ function setStatus(todo, statusIndex) {
 
   if (statusIndex > -1 && statusIndex < 3) {
     const todoStatus = todo.getStatus();
-    todoStatus.length = 0;
-    todoStatus.push(statusList[statusIndex]);
+    todoStatus.color = statusList[statusIndex].color;
+    todoStatus.toString = statusList[statusIndex].toString;
   }
 }
 export default setStatus;
