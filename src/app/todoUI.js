@@ -2,6 +2,7 @@ import todoFactory from "./utils/todoFactory";
 import setPriority from "./utils/setPriority";
 import setStatus from "./utils/setStatus";
 import removeInstance from "./utils/removeInstance";
+import tasksToComplete from "./utils/tasksToComplete";
 
 const todoUI = () => {
   const todoList = [];
@@ -15,6 +16,7 @@ const todoUI = () => {
     setStatus: (todoIndex, statusIndex) =>
       setStatus(todoList[todoIndex], statusIndex),
     remove: (index) => removeInstance(todoList, index),
+    tasksToComplete: tasksToComplete(todoList),
   };
 };
 export default todoUI;

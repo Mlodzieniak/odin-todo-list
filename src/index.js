@@ -7,6 +7,4 @@ import dom from "./app/DOM";
 // domEle.textContent = "Hello, world!";
 // domEle.classList.add("element");
 // document.querySelector("body").appendChild(domEle);
-projectsUI.add();
-console.log(projectsUI.getProjects);
 dom();

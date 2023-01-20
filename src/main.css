@@ -156,14 +156,28 @@ body {
     background-color: chartreuse;
     width: 90%;
     height: calc(90% - 60px);
-    opacity: 0.5;
+    /* opacity: 0.5; */
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 2fr 5fr;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.projects-list {
+    overflow-y: scroll;
+    height: 100%;
+    padding: 0.5rem;
+
 }
 
 .project-label {
+    padding: 1rem;
     background-color: blueviolet;
-    width: 100px;
-    height: 100px;
-    border: solid 2px black;
+    margin-bottom: 0.5rem;
+
 }
