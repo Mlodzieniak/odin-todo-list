@@ -179,5 +179,12 @@ body {
     padding: 1rem;
     background-color: blueviolet;
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
 
+.remove-btn {
+    background: none;
+    border: none;
+    opacity: 0.5;
 }
