@@ -1,3 +1,5 @@
+import projectsUI from "../projectsUI";
+
 const list = document.querySelector(".projects-list");
 const printProjects = (projects) => {
   list.innerHTML = "";
@@ -29,6 +31,7 @@ const printProjects = (projects) => {
     label.classList.add("project-label");
     label.appendChild(labelData);
     label.appendChild(labelButtons);
+    label.setAttribute("data-id", project.getID());
     list.appendChild(label);
   });
 };

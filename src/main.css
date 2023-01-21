@@ -188,3 +188,7 @@ body {
     border: none;
     opacity: 0.5;
 }
+
+button:active {
+    scale: 1.2;
+}
