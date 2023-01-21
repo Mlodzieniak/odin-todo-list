@@ -1,5 +1,3 @@
-import projectsUI from "../projectsUI";
-
 const list = document.querySelector(".projects-list");
 const printProjects = (projects) => {
   list.innerHTML = "";

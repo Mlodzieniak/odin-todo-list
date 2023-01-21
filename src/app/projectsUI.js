@@ -7,8 +7,12 @@ const projectsUI = () => {
     add() {
       projects.push(projectFactory());
     },
-    remove: (index) => removeInstance(projects, index),
-
+    remove: (project) => {
+      const index = projects.indexOf(project);
+      if (index > -1) {
+        removeInstance(projects, index);
+      }
+    },
     getProjects: projects,
   };
 };

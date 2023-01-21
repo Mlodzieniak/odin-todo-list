@@ -9,18 +9,21 @@ const dom = () => ({
   newProject() {
     projectsUI.add();
     printProjects(projectsUI.getProjects);
+    dom().removeBTNsListener();
+  },
+  removeProject: (event) => {
+    const projectID = event.target.parentNode.parentNode.dataset.id;
+    removeProject(projectID);
+    dom().printProjects(projectsUI.getProjects);
+    dom().removeBTNsListener();
+  },
+  removeBTNsListener: () => {
     const removeBTNs = document.querySelectorAll(".remove-btn");
     removeBTNs.forEach((button) => {
       button.addEventListener("click", (event) => {
         dom().removeProject(event);
       });
     });
-  },
-  //   removeProject: (evt) => removeProject(evt),
-  removeProject: (event) => {
-    const projectID = event.target.parentNode.parentNode.dataset.id;
-    removeProject(projectID);
-    dom().printProjects(projectsUI.getProjects);
   },
 });
 
