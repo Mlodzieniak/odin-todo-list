@@ -12,21 +12,37 @@ const dom = () => ({
     dom().selectProjectBTNsListener();
   },
   printTasks: (event) => {
-    const projectID = event.target.parentNode.parentNode.dataset.id;
+    let projectID = event.target.parentNode.parentNode.dataset.id;
+    if (projectID === undefined) {
+      projectID = event.target.dataset.id;
+    }
     console.log(projectID);
     const projects = projectsUI.getProjects;
     projects.forEach((project) => {
       if (projectID === project.getID()) {
-        printTasks(project.todoUI.getList());
+        printTasks(project.todoUI.getList(), projectID);
       }
     });
-    // printTasks();
+    const newTaskBTN = document.querySelector(".new-task-btn");
+    newTaskBTN.addEventListener("click", (event2) => dom().newTask(event2));
   },
   newProject() {
     projectsUI.add();
     dom().printProjects(projectsUI.getProjects);
   },
-  newTask: () => {},
+  newTask: (event) => {
+    const projectID = event.target.dataset.id;
+    const projects = projectsUI.getProjects;
+    console.log(`new task${projectID}`);
+    projects.forEach((project) => {
+      if (project.getID() === projectID) {
+        project.todoUI.add();
+        // printTasks(project.todoUI.getList(), projectID);
+        // dom().printProjects();
+        dom().printTasks(event);
+      }
+    });
+  },
   removeProject: (event) => {
     const projectID = event.target.parentNode.parentNode.dataset.id;
     removeProject(projectID);

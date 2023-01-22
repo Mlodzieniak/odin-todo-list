@@ -1,4 +1,4 @@
-const printTasks = (tasks) => {
+const printTasks = (tasks, projectID) => {
   const projectContent = document.querySelector(".project-content");
 
   const todoWrapper = document.createElement("div");
@@ -35,6 +35,7 @@ const printTasks = (tasks) => {
   const newTaskBTN = document.createElement("button");
   newTaskBTN.setAttribute("type", "button");
   newTaskBTN.classList.add("new-task-btn");
+  newTaskBTN.setAttribute("data-id", projectID);
   newTaskBTN.innerHTML = "+ New task";
   projectContent.appendChild(newTaskBTN);
 
