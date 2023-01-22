@@ -14,6 +14,8 @@ const projectsUI = () => {
       }
     },
     getProjects: projects,
+    getProjectById: (projectID) =>
+      projects.find((project) => project.getID() === projectID),
   };
 };
 export default projectsUI();

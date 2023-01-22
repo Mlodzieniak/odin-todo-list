@@ -1,7 +1,7 @@
 import formatISO9075 from "date-fns/formatISO9075";
 import isStringLengthValid from "./isStringLengthValid";
 import todoUI from "../todoUI";
-import generateRandomString from "./randomString";
+import generateRandomString from "./randomString.js";
 
 const projectFactory = () => {
   let projectName = "Project";

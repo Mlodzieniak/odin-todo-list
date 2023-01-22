@@ -16,7 +16,6 @@ const dom = () => ({
     if (projectID === undefined) {
       projectID = event.target.dataset.id;
     }
-    console.log(projectID);
     const projects = projectsUI.getProjects;
     projects.forEach((project) => {
       if (projectID === project.getID()) {
@@ -25,6 +24,7 @@ const dom = () => ({
     });
     const newTaskBTN = document.querySelector(".new-task-btn");
     newTaskBTN.addEventListener("click", (event2) => dom().newTask(event2));
+    dom().removeTaskBTNsListener();
   },
   newProject() {
     projectsUI.add();
@@ -48,11 +48,26 @@ const dom = () => ({
     removeProject(projectID);
     dom().printProjects(projectsUI.getProjects);
   },
+  removeTask: (event) => {
+    const taskID = event.target.parentNode.parentNode.dataset.taskid;
+    const projectID = event.target.parentNode.parentNode.dataset.projectid;
+    const project = projectsUI.getProjectById(projectID);
+    project.todoUI.removeTaskById(taskID);
+    // dom().printTasks(event);
+  },
   removeBTNsListener: () => {
     const removeBTNs = document.querySelectorAll(".remove-btn");
     removeBTNs.forEach((button) => {
       button.addEventListener("click", (event) => {
         dom().removeProject(event);
+      });
+    });
+  },
+  removeTaskBTNsListener: () => {
+    const removeTaskBTNs = document.querySelectorAll(".remove-task-btn");
+    removeTaskBTNs.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        dom().removeTask(event);
       });
     });
   },

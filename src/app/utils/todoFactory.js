@@ -1,11 +1,13 @@
 import formatISO9075 from "date-fns/formatISO9075";
 import isDateValid from "./isDateValid";
 import isStringLengthValid from "./isStringLengthValid";
+import generateRandomString from "./randomString";
 
 const todoFactory = () => {
   let title = "Todo";
   let description = "";
   const creationDate = formatISO9075(new Date());
+  const taskID = generateRandomString(15);
   let deadlineDate = null;
   // new created todo's get default priority low
   const priority = {
@@ -38,6 +40,7 @@ const todoFactory = () => {
     getDeadlineDate: () => deadlineDate,
     getPriority: () => priority,
     getStatus: () => status,
+    getID: () => taskID,
   };
 };
 export default todoFactory;

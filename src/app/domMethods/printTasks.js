@@ -28,9 +28,6 @@ const printTasks = (tasks, projectID) => {
   doneWrapper.appendChild(doneHeader);
   doneWrapper.appendChild(doneList);
 
-  // todoWrapper.innerHTML = "";
-  // doingWrapper.innerHTML = "";
-  // doneWrapper.innerHTML = "";
   projectContent.innerHTML = "";
   const newTaskBTN = document.createElement("button");
   newTaskBTN.setAttribute("type", "button");
@@ -49,7 +46,6 @@ const printTasks = (tasks, projectID) => {
     const creationDate = document.createElement("div");
     const deadlineDate = document.createElement("div");
     const priority = document.createElement("div");
-    const projectID = document.createElement("div");
 
     // Buttons
     const removeBTN = document.createElement("button");
@@ -66,13 +62,16 @@ const printTasks = (tasks, projectID) => {
     labelData.appendChild(creationDate);
     labelData.appendChild(deadlineDate);
     labelData.appendChild(priority);
-    labelData.appendChild(projectID);
+    // labelData.appendChild(projectID);
 
     labelButtons.appendChild(removeBTN);
 
     label.classList.add("project-label");
     label.appendChild(labelData);
     label.appendChild(labelButtons);
+    label.setAttribute("data-taskid", task.getID());
+    label.setAttribute("data-projectid", projectID);
+
     // label.setAttribute("data-id", project.getID());
     if (task.getStatus().toString === "Todo") {
       todoList.appendChild(label);

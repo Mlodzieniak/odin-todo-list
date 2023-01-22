@@ -17,6 +17,11 @@ const todoUI = () => {
       setStatus(todoList[todoIndex], statusIndex),
     remove: (index) => removeInstance(todoList, index),
     tasksToComplete: tasksToComplete(todoList),
+    removeTaskById: (taskID) => {
+      const task = todoList.find((task2) => task2.getID() === taskID);
+      const index = todoList.indexOf(task);
+      removeInstance(todoList, index);
+    },
   };
 };
 export default todoUI;
