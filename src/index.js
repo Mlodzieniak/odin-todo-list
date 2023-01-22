@@ -10,3 +10,4 @@ import dom from "./app/DOM";
 dom().newProject();
 dom().newProject();
 dom().newProject();
+projectsUI.getProjects[0].todoUI.add();

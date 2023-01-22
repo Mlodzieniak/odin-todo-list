@@ -183,6 +183,11 @@ body {
     justify-content: space-between;
 }
 
+.project-content {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
 .remove-btn {
     background: none;
     border: none;

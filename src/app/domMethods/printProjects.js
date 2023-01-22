@@ -10,6 +10,7 @@ const printProjects = (projects) => {
     const name = document.createElement("div");
     const creationDate = document.createElement("div");
     const todos = document.createElement("div");
+    const projectID = document.createElement("div");
 
     // Buttons
     const removeBTN = document.createElement("button");
@@ -20,9 +21,11 @@ const printProjects = (projects) => {
     name.textContent = `Name: ${project.getProjectName()}`;
     creationDate.textContent = `Creation date: ${project.getCreationDate()}`;
     todos.textContent = `Tasks to perform: ${project.todoUI.tasksToComplete}`;
+    projectID.textContent = `ID: ${project.getID()}`;
     labelData.appendChild(name);
     labelData.appendChild(creationDate);
     labelData.appendChild(todos);
+    labelData.appendChild(projectID);
 
     labelButtons.appendChild(removeBTN);
 
