@@ -161,7 +161,7 @@ body {
     grid-template-columns: 2fr 5fr;
 }
 
-.projects {
+.projects-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
