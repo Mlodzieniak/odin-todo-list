@@ -3,8 +3,8 @@ import isStringLengthValid from "./isStringLengthValid";
 import todoUI from "../todoUI";
 import generateRandomString from "./randomString.js";
 
-const projectFactory = () => {
-  let projectName = "Project";
+const projectFactory = (name) => {
+  let projectName = name;
   const creationDate = formatISO9075(new Date());
   const projectID = generateRandomString(10);
 

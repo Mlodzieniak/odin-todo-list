@@ -4,8 +4,8 @@ import removeInstance from "./utils/removeInstance";
 const projectsUI = () => {
   const projects = [];
   return {
-    add() {
-      projects.push(projectFactory());
+    add(name) {
+      projects.push(projectFactory(name));
     },
     remove: (project) => {
       const index = projects.indexOf(project);
