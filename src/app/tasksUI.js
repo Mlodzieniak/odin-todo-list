@@ -4,11 +4,11 @@ import setStatus from "./utils/setStatus";
 import removeInstance from "./utils/removeInstance";
 import tasksToComplete from "./utils/tasksToComplete";
 
-const todoUI = () => {
+const tasksUI = () => {
   const todoList = [];
   return {
-    add() {
-      todoList.push(todoFactory());
+    add(title) {
+      todoList.push(todoFactory(title));
     },
     getList: () => [...todoList],
     setPriority: (todoIndex, priorityIndex) =>
@@ -24,4 +24,4 @@ const todoUI = () => {
     },
   };
 };
-export default todoUI;
+export default tasksUI;

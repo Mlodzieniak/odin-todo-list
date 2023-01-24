@@ -1,6 +1,6 @@
 import formatISO9075 from "date-fns/formatISO9075";
 import isStringLengthValid from "./isStringLengthValid";
-import todoUI from "../todoUI";
+import tasksUI from "../tasksUI";
 import generateRandomString from "./randomString.js";
 
 const projectFactory = (name) => {
@@ -17,7 +17,7 @@ const projectFactory = (name) => {
     getProjectName: () => projectName,
     getCreationDate: () => creationDate,
     getID: () => projectID,
-    todoUI: todoUI(),
+    tasksUI: tasksUI(),
   };
 };
 export default projectFactory;

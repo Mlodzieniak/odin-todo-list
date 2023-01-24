@@ -3,8 +3,8 @@ import isDateValid from "./isDateValid";
 import isStringLengthValid from "./isStringLengthValid";
 import generateRandomString from "./randomString";
 
-const todoFactory = () => {
-  let title = "Todo";
+const todoFactory = (name) => {
+  let title = name;
   let description = "";
   const creationDate = formatISO9075(new Date());
   const taskID = generateRandomString(15);

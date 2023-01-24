@@ -1,4 +1,5 @@
 import projectsUI from "../projectsUI";
+import taskDom from "../taskDOM";
 
 const projects = projectsUI.getProjects;
 const projectsList = document.querySelector(".projects-list");
@@ -20,7 +21,7 @@ const printProjects = () => {
 
     projectName.textContent = `Name: ${project.getProjectName()}`;
     projectCreationDate.textContent = `Creation date: ${project.getCreationDate()}`;
-    taskCounter.textContent = `Tasks to perform: ${project.todoUI.tasksToComplete}`;
+    taskCounter.textContent = `Tasks to perform: ${project.tasksUI.tasksToComplete}`;
     label.setAttribute("data-id", project.getID());
     projectsList.appendChild(label);
 
@@ -38,6 +39,9 @@ const printProjects = () => {
     removeBTN.addEventListener("click", () => {
       projectsUI.removeByID(project.getID());
       projectsList.removeChild(label);
+    });
+    viewTasksBTN.addEventListener("click", () => {
+      taskDom(project);
     });
   }
 

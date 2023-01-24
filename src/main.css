@@ -175,12 +175,17 @@ body {
 
 }
 
-.project-label {
+.project-label,
+.task-label {
     padding: 1rem;
     background-color: blueviolet;
     margin-bottom: 0.5rem;
     display: flex;
     justify-content: space-between;
+}
+
+.task-label {
+    background-color: goldenrod;
 }
 
 .project-content {

@@ -49,12 +49,5 @@ const projectDom = () => {
   newProjectBTN.dispatchEvent(event);
   newProjectName.value = "Bieganie";
   acceptBTN.dispatchEvent(event);
-
-  return {
-    printProjects: () => {
-      printProjects();
-    },
-    printButtons: () => {},
-  };
 };
 export default projectDom;
