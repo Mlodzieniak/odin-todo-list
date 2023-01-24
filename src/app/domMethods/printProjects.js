@@ -35,10 +35,10 @@ const printProjects = () => {
       viewTasksBTN,
       removeBTN
     );
-    // label.appendChild(viewInfoBTN);
-    // viewInfoBTN.addEventListener("click", (event) => {
-    //   event.target.parentNode.appendChild(projectCreationDate, taskCounter);
-    // });
+    removeBTN.addEventListener("click", () => {
+      projectsUI.removeByID(project.getID());
+      projectsList.removeChild(label);
+    });
   }
 
   projects.forEach((project) => {

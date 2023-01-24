@@ -24,18 +24,31 @@ const projectDom = () => {
   });
   acceptBTN.addEventListener("click", () => {
     if (newProjectName.value.length < 3 || newProjectName.value.length > 30) {
-      //   projectsWrapper.appendChild(nameError);
       projectsWrapper.insertBefore(nameError, newProjectName);
     } else {
       projectsUI.add(newProjectName.value);
       printProjects();
       projectsWrapper.removeChild(newProjectName);
       projectsWrapper.removeChild(acceptBTN);
-      projectsWrapper.removeChild(nameError);
       projectsWrapper.appendChild(newProjectBTN);
+      if (nameError.parentNode === projectsWrapper) {
+        projectsWrapper.removeChild(nameError);
+      }
     }
   });
   projectsWrapper.appendChild(newProjectBTN);
+
+  // DUMMY's
+  const event = new Event("click");
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Kup mleko";
+  acceptBTN.dispatchEvent(event);
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Idz do kina";
+  acceptBTN.dispatchEvent(event);
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Bieganie";
+  acceptBTN.dispatchEvent(event);
 
   return {
     printProjects: () => {

@@ -13,8 +13,13 @@ const projectsUI = () => {
         removeInstance(projects, index);
       }
     },
+    removeByID: (projectID) => {
+      const found = projects.find((project) => project.getID() === projectID);
+      const index = projects.indexOf(found);
+      projects.splice(index, 1);
+    },
     getProjects: projects,
-    getProjectById: (projectID) =>
+    getProjectByID: (projectID) =>
       projects.find((project) => project.getID() === projectID),
   };
 };
