@@ -51,8 +51,9 @@ const printTasks = (project) => {
     label.append(taskName, buttons);
 
     removeBTN.addEventListener("click", () => {
-      tasksUI.removeByID(task.getID());
+      project.tasksUI.removeByID(task.getID());
       todo.removeChild(label);
+      console.log("XD");
     });
     viewInfoBTN.addEventListener("click", () => {
       label.append(taskCreationDate, taskSetDeadline, taskDescription, saveBTN);
