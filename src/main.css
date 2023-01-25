@@ -184,8 +184,15 @@ body {
     justify-content: space-between;
 }
 
+.task-list-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .task-label {
     background-color: goldenrod;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-content {
