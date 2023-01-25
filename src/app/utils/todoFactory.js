@@ -1,5 +1,5 @@
 import formatISO9075 from "date-fns/formatISO9075";
-import isDateValid from "./isDateValid";
+import formatISO from "date-fns/formatISO";
 import isStringLengthValid from "./isStringLengthValid";
 import generateRandomString from "./randomString";
 
@@ -32,7 +32,9 @@ const todoFactory = (name) => {
       }
     },
     setDeadlineDate(newDeadLineDate) {
-      deadlineDate = isDateValid(newDeadLineDate);
+      console.log(newDeadLineDate);
+      // deadlineDate = formatISO(newDeadLineDate);
+      deadlineDate = newDeadLineDate;
     },
     getTitle: () => title,
     getDescription: () => description,
