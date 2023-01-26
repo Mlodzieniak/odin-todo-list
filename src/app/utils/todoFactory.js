@@ -2,6 +2,7 @@ import formatISO9075 from "date-fns/formatISO9075";
 import formatISO from "date-fns/formatISO";
 import isStringLengthValid from "./isStringLengthValid";
 import generateRandomString from "./randomString";
+import setStatus from "./setStatus";
 
 const todoFactory = (name) => {
   let title = name;
@@ -19,6 +20,7 @@ const todoFactory = (name) => {
   const status = {
     color: "blue",
     toString: "Todo",
+    index: 0,
   };
   return {
     setTitle(newTitle) {
@@ -32,10 +34,9 @@ const todoFactory = (name) => {
       }
     },
     setDeadlineDate(newDeadLineDate) {
-      console.log(newDeadLineDate);
-      // deadlineDate = formatISO(newDeadLineDate);
       deadlineDate = newDeadLineDate;
     },
+    setStatus: (newStatus) => setStatus(status, newStatus),
     getTitle: () => title,
     getDescription: () => description,
     getCreationDate: () => creationDate,

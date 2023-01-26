@@ -3,6 +3,7 @@ import removeInstance from "./utils/removeInstance";
 
 const projectsUI = () => {
   const projects = [];
+  // const projects = localStorage.getItem("projects");
   return {
     add(name) {
       projects.push(projectFactory(name));

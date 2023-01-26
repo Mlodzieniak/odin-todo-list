@@ -1,10 +1,12 @@
 import formatISO from "date-fns/formatISO";
-import tasksUI from "../tasksUI";
 
 const printTasks = (project) => {
   const container = document.querySelector(".project-content");
   // const todo = document.createElement("div");
   const todo = document.querySelector(".todo-list");
+  const doing = document.querySelector(".doing-list");
+  const done = document.querySelector(".done-list");
+
   container.appendChild(todo);
   const tasks = project.tasksUI.getList();
   function print(task) {
@@ -12,6 +14,12 @@ const printTasks = (project) => {
     const taskName = document.createElement("div");
     const taskCreationDate = document.createElement("div");
     const taskSetDeadline = document.createElement("input");
+    const taskSetDeadlineLabel = document.createElement("label");
+    const statusList = document.createElement("select");
+    const statusListLabel = document.createElement("label");
+    const todoOption = document.createElement("option");
+    const doingOption = document.createElement("option");
+    const doneOption = document.createElement("option");
     const taskDeadline = document.createElement("div");
     const taskDescription = document.createElement("textarea");
     const buttons = document.createElement("div");
@@ -28,35 +36,82 @@ const printTasks = (project) => {
     removeBTN.classList.add("label-buttons");
     label.setAttribute("data-id", task.getID());
     taskSetDeadline.setAttribute("type", "date");
+    taskSetDeadline.setAttribute("name", "new-deadline");
+    taskSetDeadlineLabel.setAttribute("for", "new-deadline");
     const date = formatISO(new Date(), { representation: "date" });
     taskSetDeadline.setAttribute("min", date);
 
     // taskDescription.setAttribute("rows", "5");
     // taskDescription.setAttribute("cols", "50");
     taskDescription.setAttribute("placeholder", "Comment");
+    statusList.setAttribute("name", "status");
+    statusList.setAttribute("id", "status");
+    // statusList.setAttribute("name", "status")
+    todoOption.setAttribute("value", "0");
+    todoOption.textContent = "Todo";
+    doingOption.setAttribute("value", "1");
+    doingOption.textContent = "Doing";
+    doneOption.setAttribute("value", "2");
+    doneOption.textContent = "Done";
+    statusList.append(todoOption, doingOption, doneOption);
 
     taskName.textContent = `Name: ${task.getTitle()}`;
     taskCreationDate.textContent = `Creation date: ${task.getCreationDate()}`;
     taskDeadline.textContent = `Deadline: ${task.getDeadlineDate()}`;
+    taskSetDeadlineLabel.textContent = "Set deadline:";
+    statusListLabel.textContent = "Status:";
     taskDescription.value = task.getDescription();
     // label.setAttribute("data-id", task.getID());
-    todo.appendChild(label);
+    if (task.getStatus().toString === "Todo") {
+      todo.appendChild(label);
+    } else if (task.getStatus().toString === "Doing") {
+      doing.appendChild(label);
+    } else if (task.getStatus().toString === "Done") {
+      done.appendChild(label);
+    }
+
+    // console.log(optionsList[selectedIndex]);
+    // const optionsLists = optionsList.options;
+    // optionsLists.forEach((option) => {
+    //   if (option.value === task.getStatus().toString) {
+    //     console.log(option);
+    //     option.setAttribute("selected", "true");
+    //   }
+    // });
+    // for (let index = 0; index < optionsLists.length; index + 1) {
+    //   if (optionsLists[index].value === task.getStatus().toString) {
+    //     optionsLists[index].selected = true;
+    //   }
+    // }
 
     removeBTN.innerHTML = "\u274C";
     viewInfoBTN.innerHTML = "More Info";
     hideInfoBTN.innerHTML = "Hide Info";
     saveBTN.innerHTML = "Save";
     progressBTN.innerHTML = ">>";
-    buttons.append(viewInfoBTN, removeBTN, progressBTN);
+    buttons.append(viewInfoBTN, removeBTN);
     label.append(taskName, buttons);
-
     removeBTN.addEventListener("click", () => {
       project.tasksUI.removeByID(task.getID());
       todo.removeChild(label);
-      console.log("XD");
     });
     viewInfoBTN.addEventListener("click", () => {
-      label.append(taskCreationDate, taskSetDeadline, taskDescription, saveBTN);
+      label.append(
+        taskCreationDate,
+        taskSetDeadlineLabel,
+        taskSetDeadline,
+        statusListLabel,
+        statusList,
+        progressBTN,
+        taskDescription,
+        saveBTN
+      );
+      const optionsList = document.getElementById("status");
+      console.log(`old: ${optionsList.selectedIndex}`);
+      optionsList.selectedIndex = task.getStatus().index;
+      console.log(`new: ${optionsList.selectedIndex}`);
+      console.log(task.getStatus());
+
       buttons.replaceChild(hideInfoBTN, viewInfoBTN);
       if (task.getDeadlineDate() !== null) {
         label.replaceChild(taskDeadline, taskSetDeadline);
@@ -66,20 +121,28 @@ const printTasks = (project) => {
       label.removeChild(taskCreationDate);
       label.removeChild(taskSetDeadline);
       label.removeChild(taskDescription);
+      label.removeChild(progressBTN);
+      label.removeChild(statusList);
+      label.removeChild(statusListLabel);
+      label.removeChild(taskSetDeadlineLabel);
       label.removeChild(saveBTN);
       buttons.replaceChild(viewInfoBTN, hideInfoBTN);
+    });
+    progressBTN.addEventListener("click", () => {
+      const newStatus = parseInt(statusList.value, 10);
+      task.setStatus(newStatus);
+      const parent = label.parentNode;
+      parent.removeChild(label);
+      print(task);
     });
     saveBTN.addEventListener("click", () => {
       if (taskDescription.value.length !== 0) {
         task.setDescription(taskDescription.value);
       }
       if (taskSetDeadline.value.length !== 0) {
-        // console.log(taskDeadline.value);
-        // task.setDeadlineDate(new Date());
         task.setDeadlineDate(taskSetDeadline.value);
+        label.removeChild(taskSetDeadlineLabel);
         taskDeadline.textContent = `Deadline: ${task.getDeadlineDate()}`;
-
-        // label.removeChild(taskSetDeadline);
         label.replaceChild(taskDeadline, taskSetDeadline);
       }
     });

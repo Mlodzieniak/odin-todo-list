@@ -5,6 +5,8 @@ const projects = projectsUI.getProjects;
 const projectsList = document.querySelector(".projects-list");
 const printProjects = () => {
   function print(project) {
+    localStorage.setItem(project.getID(), project.getProjectName);
+
     const label = document.createElement("div");
     const projectName = document.createElement("div");
     const projectCreationDate = document.createElement("div");
@@ -43,6 +45,7 @@ const printProjects = () => {
     viewTasksBTN.addEventListener("click", () => {
       taskDom(project);
     });
+    localStorage.setItem(project.getID(), project);
   }
 
   projects.forEach((project) => {

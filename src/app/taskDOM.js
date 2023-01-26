@@ -6,8 +6,11 @@ import printTasks from "./domMethods/printTasks";
 const taskDom = (project) => {
   const tasksWrapper = document.querySelector(".project-content");
   const todoTasks = document.createElement("div");
+  const todoHeader = document.createElement("h1");
   const doingTasks = document.createElement("div");
+  const doingHeader = document.createElement("h1");
   const doneTasks = document.createElement("div");
+  const doneHeader = document.createElement("h1");
 
   const newTaskBTN = document.createElement("button");
   const newTaskName = document.createElement("input");
@@ -16,6 +19,16 @@ const taskDom = (project) => {
 
   todoTasks.classList.add("task-list-wrapper");
   todoTasks.classList.add("todo-list");
+  todoHeader.textContent = "TODO";
+  todoTasks.appendChild(todoHeader);
+  doingTasks.classList.add("task-list-wrapper");
+  doingTasks.classList.add("doing-list");
+  doingHeader.textContent = "DOING";
+  doingTasks.appendChild(doingHeader);
+  doneTasks.classList.add("task-list-wrapper");
+  doneTasks.classList.add("done-list");
+  doneHeader.textContent = "DONE";
+  doneTasks.appendChild(doneHeader);
 
   tasksWrapper.innerHTML = "";
 
