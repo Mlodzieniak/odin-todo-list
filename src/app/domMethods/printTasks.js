@@ -40,13 +40,9 @@ const printTasks = (project) => {
     taskSetDeadlineLabel.setAttribute("for", "new-deadline");
     const date = formatISO(new Date(), { representation: "date" });
     taskSetDeadline.setAttribute("min", date);
-
-    // taskDescription.setAttribute("rows", "5");
-    // taskDescription.setAttribute("cols", "50");
     taskDescription.setAttribute("placeholder", "Comment");
     statusList.setAttribute("name", "status");
     statusList.setAttribute("id", "status");
-    // statusList.setAttribute("name", "status")
     todoOption.setAttribute("value", "0");
     todoOption.textContent = "Todo";
     doingOption.setAttribute("value", "1");
@@ -61,7 +57,6 @@ const printTasks = (project) => {
     taskSetDeadlineLabel.textContent = "Set deadline:";
     statusListLabel.textContent = "Status:";
     taskDescription.value = task.getDescription();
-    // label.setAttribute("data-id", task.getID());
     if (task.getStatus().toString === "Todo") {
       todo.appendChild(label);
     } else if (task.getStatus().toString === "Doing") {
@@ -69,20 +64,6 @@ const printTasks = (project) => {
     } else if (task.getStatus().toString === "Done") {
       done.appendChild(label);
     }
-
-    // console.log(optionsList[selectedIndex]);
-    // const optionsLists = optionsList.options;
-    // optionsLists.forEach((option) => {
-    //   if (option.value === task.getStatus().toString) {
-    //     console.log(option);
-    //     option.setAttribute("selected", "true");
-    //   }
-    // });
-    // for (let index = 0; index < optionsLists.length; index + 1) {
-    //   if (optionsLists[index].value === task.getStatus().toString) {
-    //     optionsLists[index].selected = true;
-    //   }
-    // }
 
     removeBTN.innerHTML = "\u274C";
     viewInfoBTN.innerHTML = "More Info";
@@ -107,10 +88,7 @@ const printTasks = (project) => {
         saveBTN
       );
       const optionsList = document.getElementById("status");
-      console.log(`old: ${optionsList.selectedIndex}`);
       optionsList.selectedIndex = task.getStatus().index;
-      console.log(`new: ${optionsList.selectedIndex}`);
-      console.log(task.getStatus());
 
       buttons.replaceChild(hideInfoBTN, viewInfoBTN);
       if (task.getDeadlineDate() !== null) {

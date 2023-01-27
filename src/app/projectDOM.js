@@ -13,8 +13,12 @@ const projectDom = () => {
   newProjectName.setAttribute("type", "text");
   newProjectName.setAttribute("placeholder", "Project's name");
 
-  newProjectBTN.textContent = "+";
-  acceptBTN.textContent = "Accept";
+  newProjectBTN.textContent = "+ New project";
+  nameError.classList.add("name-error");
+  newProjectName.classList.add("input-text");
+  newProjectBTN.classList.add("new-project-btn");
+  acceptBTN.classList.add("new-project-btn");
+  acceptBTN.textContent = "Add";
   nameError.textContent = "Name should have between 3 and 30 characters.";
 
   newProjectBTN.addEventListener("click", () => {
@@ -39,15 +43,15 @@ const projectDom = () => {
   projectsWrapper.appendChild(newProjectBTN);
 
   // DUMMY's
-  // const event = new Event("click");
-  // newProjectBTN.dispatchEvent(event);
-  // newProjectName.value = "Kup mleko";
-  // acceptBTN.dispatchEvent(event);
-  // newProjectBTN.dispatchEvent(event);
-  // newProjectName.value = "Idz do kina";
-  // acceptBTN.dispatchEvent(event);
-  // newProjectBTN.dispatchEvent(event);
-  // newProjectName.value = "Bieganie";
-  // acceptBTN.dispatchEvent(event);
+  const event = new Event("click");
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Kup mleko";
+  acceptBTN.dispatchEvent(event);
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Idz do kina";
+  acceptBTN.dispatchEvent(event);
+  newProjectBTN.dispatchEvent(event);
+  newProjectName.value = "Bieganie";
+  acceptBTN.dispatchEvent(event);
 };
 export default projectDom;

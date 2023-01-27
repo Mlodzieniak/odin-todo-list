@@ -14,16 +14,19 @@ const printProjects = () => {
     const viewInfoBTN = document.createElement("button");
     const removeBTN = document.createElement("button");
     const viewTasksBTN = document.createElement("button");
+    const projectDataContainer = document.createElement("div");
+    const projectButtons = document.createElement("div");
 
     label.classList.add("project-label");
     projectName.classList.add("project-name");
-    viewInfoBTN.classList.add("label-buttons");
-    removeBTN.classList.add("label-buttons");
-    viewTasksBTN.classList.add("label-buttons");
+    removeBTN.classList.add("remove-btn");
+    viewTasksBTN.classList.add("view-info-btn");
+    projectDataContainer.classList.add("project-data-container");
+    projectButtons.classList.add("project-buttons");
 
-    projectName.textContent = `Name: ${project.getProjectName()}`;
-    projectCreationDate.textContent = `Creation date: ${project.getCreationDate()}`;
-    taskCounter.textContent = `Tasks to perform: ${project.tasksUI.tasksToComplete}`;
+    projectName.textContent = `${project.getProjectName()}`;
+    projectCreationDate.innerHTML = `Created: <span>${project.getCreationDate()}</span>`;
+    taskCounter.innerHTML = `Todo's: <span>${project.tasksUI.tasksToComplete}</span>`;
     label.setAttribute("data-id", project.getID());
     projectsList.appendChild(label);
 
@@ -31,13 +34,10 @@ const printProjects = () => {
     viewInfoBTN.innerHTML = "Info";
     viewTasksBTN.innerHTML = "Tasks";
 
-    label.append(
-      projectName,
-      projectCreationDate,
-      taskCounter,
-      viewTasksBTN,
-      removeBTN
-    );
+    projectDataContainer.append(projectName, projectCreationDate, taskCounter);
+    projectButtons.append(viewTasksBTN, removeBTN);
+
+    label.append(projectDataContainer, projectButtons);
     removeBTN.addEventListener("click", () => {
       projectsUI.removeByID(project.getID());
       projectsList.removeChild(label);

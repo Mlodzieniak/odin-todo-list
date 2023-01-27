@@ -19,15 +19,15 @@ const taskDom = (project) => {
 
   todoTasks.classList.add("task-list-wrapper");
   todoTasks.classList.add("todo-list");
-  todoHeader.textContent = "TODO";
+  todoHeader.textContent = "Todo";
   todoTasks.appendChild(todoHeader);
   doingTasks.classList.add("task-list-wrapper");
   doingTasks.classList.add("doing-list");
-  doingHeader.textContent = "DOING";
+  doingHeader.textContent = "Doing";
   doingTasks.appendChild(doingHeader);
   doneTasks.classList.add("task-list-wrapper");
   doneTasks.classList.add("done-list");
-  doneHeader.textContent = "DONE";
+  doneHeader.textContent = "Done";
   doneTasks.appendChild(doneHeader);
 
   tasksWrapper.innerHTML = "";
@@ -36,7 +36,7 @@ const taskDom = (project) => {
   newTaskName.setAttribute("placeholder", "task's name");
   newTaskName.value = "TASK";
 
-  newTaskBTN.textContent = "+";
+  newTaskBTN.textContent = "+ New task";
   acceptBTN.textContent = "Accept";
   nameError.textContent = "Name should have between 3 and 30 characters.";
 
@@ -53,7 +53,6 @@ const taskDom = (project) => {
       todoTasks.insertBefore(nameError, newTaskName);
     } else {
       project.tasksUI.add(newTaskName.value);
-      // console.log(tasksUI().getList());
       printTasks(project);
       todoTasks.removeChild(newTaskName);
       todoTasks.removeChild(acceptBTN);
@@ -65,17 +64,5 @@ const taskDom = (project) => {
   });
   printTasks(project);
   todoTasks.appendChild(newTaskBTN);
-
-  // // DUMMY's
-  // const event = new Event("click");
-  // newtaskBTN.dispatchEvent(event);
-  // newtaskName.value = "wyjdz z domu";
-  // acceptBTN.dispatchEvent(event);
-  // newtaskBTN.dispatchEvent(event);
-  // newtaskName.value = "wypij kole";
-  // acceptBTN.dispatchEvent(event);
-  // newtaskBTN.dispatchEvent(event);
-  // newtaskName.value = "wejdz do domu";
-  // acceptBTN.dispatchEvent(event);
 };
 export default taskDom;
