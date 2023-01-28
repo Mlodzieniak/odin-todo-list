@@ -136,10 +136,28 @@ table {
 
 header,
 footer {
-    height: 30px;
-    width: 100vw;
+    width: 100%;
     /* background-color: rgb(227, 101, 136); */
-    background-color: rgb(128, 207, 169);
+    background-color: rgb(153, 237, 204);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 3rem;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+footer {
+    height: 4%;
+}
+
+.header {
+    height: 8%;
+    justify-content: center;
+}
+
+.header>h1 {
+    font-size: 3rem;
+    align-items: center;
 }
 
 
@@ -164,8 +182,9 @@ body {
 
 .container {
     background-color: rgb(154, 196, 248);
-    width: 90%;
-    height: calc(90% - 60px);
+    width: 100%;
+    height: 88%;
+    /* height: calc(90% - 60px); */
     /* opacity: 0.5; */
     display: grid;
     grid-template-columns: 2fr 5fr;
@@ -213,17 +232,98 @@ body {
 }
 
 .task-label {
-    background-color: goldenrod;
+    background-color: #E7ECEF;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    /* gap: 0.5rem; */
+    grid-template-columns: repeat(3fr);
+    grid-template-areas:
+        'name buttons buttons'
+        'creation-date-text creation-date creation-date'
+        'deadline-date-text deadline-date deadline-date'
+        'status-text status-list move-btn'
+        'description description description'
+        'save-btn save-btn save-btn';
+}
+
+.task-buttons {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.task-name {
+    grid-area: name;
+    font-size: 1.2rem;
+}
+
+.task-buttons {
+    grid-area: buttons;
+    grid-column: 2 / 4;
+
+}
+
+
+
+.view-task-info-btn,
+.hide-task-info-btn,
+.progress-btn,
+.save-btn {
+    border-radius: 0.5rem;
+    background-color: #274C77;
+    color: white;
+    padding: 0.4rem 1.5rem;
+}
+
+.remove-task-btn {
+    background-color: white;
+    border: 2px solid #274C77;
+    border-radius: 0.5rem;
+
+}
+
+.task-creation-date-label {
+    grid-area: creation-date-text;
+}
+
+.task-creation-date {
+    grid-area: creation-date;
+}
+
+.task-deadline-label {
+    grid-area: deadline-date-text;
+}
+
+.task-deadline {
+    grid-area: deadline-date;
+}
+
+.task-status-list-label {
+    grid-area: status-text;
+}
+
+.task-status-list {
+    grid-area: status-list;
+}
+
+.progress-btn {
+    grid-area: move-btn;
+}
+
+.task-description {
+    grid-area: description;
+}
+
+.save-btn {
+    grid-area: save-btn;
 }
 
 .project-content {
     display: grid;
-    gap: 3rem;
+    gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
-    /* justify-content: space-between; */
-    /* flex-direction: row-reverse; */
+
 }
 
 
@@ -251,7 +351,6 @@ button:hover {
 .new-project-btn {
 
     background-color: rgb(227, 101, 136);
-    --border-color: linear-gradient(to bottom right, #F6AE2D, #86BBD8);
     border-radius: 0.5rem;
 
 }
@@ -264,7 +363,9 @@ button:hover {
 }
 
 .project-buttons {
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
+    display: flex;
+    gap: 0.5rem;
 
 }
 
@@ -272,13 +373,16 @@ button:hover {
     background-color: white;
     color: rgb(228, 0, 0);
     padding: 0.4rem 0.4rem;
+    border-radius: 0.5rem;
+    border: solid 2px #274C77;
 
 }
 
 .view-info-btn {
-    background-color: #F6AE2D;
+    background-color: #274C77;
+    color: white;
     padding: 0.4rem 1.5rem;
-
+    border-radius: 0.5rem;
 }
 
 
@@ -288,6 +392,12 @@ h1 {
     text-align: center;
     font-family: 'Permanent Marker', cursive;
 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
 }
 
 .project-name {

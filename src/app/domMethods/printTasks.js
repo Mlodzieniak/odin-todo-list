@@ -12,7 +12,8 @@ const printTasks = (project) => {
   function print(task) {
     const label = document.createElement("div");
     const taskName = document.createElement("div");
-    const taskCreationDate = document.createElement("div");
+    const taskCreationDateLabel = document.createElement("div");
+    const taskCreationDate = document.createElement("span");
     const taskSetDeadline = document.createElement("input");
     const taskSetDeadlineLabel = document.createElement("label");
     const statusList = document.createElement("select");
@@ -20,7 +21,8 @@ const printTasks = (project) => {
     const todoOption = document.createElement("option");
     const doingOption = document.createElement("option");
     const doneOption = document.createElement("option");
-    const taskDeadline = document.createElement("div");
+    const taskDeadlineLabel = document.createElement("div");
+    const taskDeadline = document.createElement("span");
     const taskDescription = document.createElement("textarea");
     const buttons = document.createElement("div");
     const viewInfoBTN = document.createElement("button");
@@ -31,9 +33,22 @@ const printTasks = (project) => {
 
     label.classList.add("task-label");
     taskName.classList.add("task-name");
-    viewInfoBTN.classList.add("label-buttons");
-    hideInfoBTN.classList.add("label-buttons");
-    removeBTN.classList.add("label-buttons");
+    taskCreationDateLabel.classList.add("task-creation-date-label");
+    taskCreationDate.classList.add("task-creation-date");
+    taskSetDeadline.classList.add("task-deadline", "input-text");
+    taskSetDeadlineLabel.classList.add("task-deadline-label");
+    taskDeadlineLabel.classList.add("task-deadline-label");
+    taskDeadline.classList.add("task-deadline");
+    statusList.classList.add("task-status-list", "input-text");
+    statusListLabel.classList.add("task-status-list-label");
+    progressBTN.classList.add("progress-btn");
+    taskDescription.classList.add("task-description", "input-text");
+    viewInfoBTN.classList.add("view-task-info-btn");
+    hideInfoBTN.classList.add("view-task-info-btn");
+    removeBTN.classList.add("remove-task-btn");
+    saveBTN.classList.add("save-btn");
+    buttons.classList.add("task-buttons");
+
     label.setAttribute("data-id", task.getID());
     taskSetDeadline.setAttribute("type", "date");
     taskSetDeadline.setAttribute("name", "new-deadline");
@@ -51,11 +66,13 @@ const printTasks = (project) => {
     doneOption.textContent = "Done";
     statusList.append(todoOption, doingOption, doneOption);
 
-    taskName.textContent = `Name: ${task.getTitle()}`;
-    taskCreationDate.textContent = `Creation date: ${task.getCreationDate()}`;
-    taskDeadline.textContent = `Deadline: ${task.getDeadlineDate()}`;
-    taskSetDeadlineLabel.textContent = "Set deadline:";
-    statusListLabel.textContent = "Status:";
+    taskName.innerHTML = `<span>${task.getTitle()}</span>`;
+    taskCreationDateLabel.innerHTML = "Creation date:";
+    taskCreationDate.innerHTML = `${task.getCreationDate()}`;
+    taskDeadlineLabel.innerHTML = "Deadline:";
+    taskDeadline.innerHTML = `${task.getDeadlineDate()}`;
+    taskSetDeadlineLabel.innerHTML = "Set deadline:";
+    statusListLabel.innerHTML = "Status:";
     taskDescription.value = task.getDescription();
     if (task.getStatus().toString === "Todo") {
       todo.appendChild(label);
@@ -69,7 +86,7 @@ const printTasks = (project) => {
     viewInfoBTN.innerHTML = "More Info";
     hideInfoBTN.innerHTML = "Hide Info";
     saveBTN.innerHTML = "Save";
-    progressBTN.innerHTML = ">>";
+    progressBTN.innerHTML = "Move";
     buttons.append(viewInfoBTN, removeBTN);
     label.append(taskName, buttons);
     removeBTN.addEventListener("click", () => {
@@ -78,6 +95,7 @@ const printTasks = (project) => {
     });
     viewInfoBTN.addEventListener("click", () => {
       label.append(
+        taskCreationDateLabel,
         taskCreationDate,
         taskSetDeadlineLabel,
         taskSetDeadline,
@@ -87,6 +105,7 @@ const printTasks = (project) => {
         taskDescription,
         saveBTN
       );
+      label.setAttribute("style", "gap: 0.5rem");
       const optionsList = document.getElementById("status");
       optionsList.selectedIndex = task.getStatus().index;
 
@@ -96,6 +115,8 @@ const printTasks = (project) => {
       }
     });
     hideInfoBTN.addEventListener("click", () => {
+      label.setAttribute("style", "gap: 0rem");
+      label.removeChild(taskCreationDateLabel);
       label.removeChild(taskCreationDate);
       label.removeChild(taskSetDeadline);
       label.removeChild(taskDescription);
@@ -119,8 +140,9 @@ const printTasks = (project) => {
       }
       if (taskSetDeadline.value.length !== 0) {
         task.setDeadlineDate(taskSetDeadline.value);
-        label.removeChild(taskSetDeadlineLabel);
-        taskDeadline.textContent = `Deadline: ${task.getDeadlineDate()}`;
+        // label.removeChild(taskSetDeadlineLabel);
+        label.replaceChild(taskDeadlineLabel, taskSetDeadlineLabel);
+        taskDeadline.innerHTML = `${task.getDeadlineDate()}`;
         label.replaceChild(taskDeadline, taskSetDeadline);
       }
     });

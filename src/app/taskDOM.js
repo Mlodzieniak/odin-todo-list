@@ -35,9 +35,12 @@ const taskDom = (project) => {
   newTaskName.setAttribute("type", "text");
   newTaskName.setAttribute("placeholder", "task's name");
   newTaskName.value = "TASK";
+  newTaskName.classList.add("input-text");
 
   newTaskBTN.textContent = "+ New task";
+  newTaskBTN.classList.add("new-project-btn");
   acceptBTN.textContent = "Accept";
+  acceptBTN.classList.add("new-project-btn");
   nameError.textContent = "Name should have between 3 and 30 characters.";
 
   tasksWrapper.appendChild(todoTasks);
