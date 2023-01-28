@@ -8,8 +8,10 @@ const printTasks = (project) => {
   const done = document.querySelector(".done-list");
 
   container.appendChild(todo);
-  const tasks = project.tasksUI.getList();
+  const tasks = project.tasksUI.getList;
   function print(task) {
+    localStorage.setItem(task.getID, JSON.stringify(task));
+
     const label = document.createElement("div");
     const taskName = document.createElement("div");
     const taskCreationDateLabel = document.createElement("div");
@@ -49,7 +51,7 @@ const printTasks = (project) => {
     saveBTN.classList.add("save-btn");
     buttons.classList.add("task-buttons");
 
-    label.setAttribute("data-id", task.getID());
+    label.setAttribute("data-id", task.getID);
     taskSetDeadline.setAttribute("type", "date");
     taskSetDeadline.setAttribute("name", "new-deadline");
     taskSetDeadlineLabel.setAttribute("for", "new-deadline");
@@ -66,19 +68,19 @@ const printTasks = (project) => {
     doneOption.textContent = "Done";
     statusList.append(todoOption, doingOption, doneOption);
 
-    taskName.innerHTML = `<span>${task.getTitle()}</span>`;
+    taskName.innerHTML = `<span>${task.getTitle}</span>`;
     taskCreationDateLabel.innerHTML = "Creation date:";
-    taskCreationDate.innerHTML = `${task.getCreationDate()}`;
+    taskCreationDate.innerHTML = `${task.getCreationDate}`;
     taskDeadlineLabel.innerHTML = "Deadline:";
-    taskDeadline.innerHTML = `${task.getDeadlineDate()}`;
+    // taskDeadline.innerHTML = `${task.getDeadlineDate}`;
     taskSetDeadlineLabel.innerHTML = "Set deadline:";
     statusListLabel.innerHTML = "Status:";
-    taskDescription.value = task.getDescription();
-    if (task.getStatus().toString === "Todo") {
+    taskDescription.value = task.getDescription;
+    if (task.getStatus.toString === "Todo") {
       todo.appendChild(label);
-    } else if (task.getStatus().toString === "Doing") {
+    } else if (task.getStatus.toString === "Doing") {
       doing.appendChild(label);
-    } else if (task.getStatus().toString === "Done") {
+    } else if (task.getStatus.toString === "Done") {
       done.appendChild(label);
     }
 
@@ -90,7 +92,7 @@ const printTasks = (project) => {
     buttons.append(viewInfoBTN, removeBTN);
     label.append(taskName, buttons);
     removeBTN.addEventListener("click", () => {
-      project.tasksUI.removeByID(task.getID());
+      project.tasksUI.removeByID(task.getID);
       todo.removeChild(label);
     });
     viewInfoBTN.addEventListener("click", () => {
@@ -108,10 +110,10 @@ const printTasks = (project) => {
 
       label.setAttribute("style", "gap: 0.5rem");
       const optionsList = document.getElementById("status");
-      optionsList.selectedIndex = task.getStatus().index;
+      optionsList.selectedIndex = task.getStatus.index;
 
       buttons.replaceChild(hideInfoBTN, viewInfoBTN);
-      if (task.getDeadlineDate() !== null) {
+      if (task.getDeadlineDate !== null) {
         label.replaceChild(taskDeadline, taskSetDeadline);
         label.replaceChild(taskDeadlineLabel, taskSetDeadlineLabel);
       }
@@ -146,12 +148,12 @@ const printTasks = (project) => {
       if (taskDescription.value.length !== 0) {
         task.setDescription(taskDescription.value);
       }
-      if (taskSetDeadline.value.length !== 0) {
+      if (taskSetDeadline.value.length > 0) {
         task.setDeadlineDate(taskSetDeadline.value);
-        // label.removeChild(taskSetDeadlineLabel);
+        const newDate = task.getDeadlineDate;
         label.replaceChild(taskDeadlineLabel, taskSetDeadlineLabel);
-        taskDeadline.innerHTML = `${task.getDeadlineDate()}`;
         label.replaceChild(taskDeadline, taskSetDeadline);
+        taskDeadline.innerHTML = `${newDate}`;
       }
     });
   }
@@ -164,7 +166,7 @@ const printTasks = (project) => {
       taskLabels.forEach((taskLabel) => {
         idContainer.push(taskLabel.dataset.id);
       });
-      if (!idContainer.includes(task.getID())) {
+      if (!idContainer.includes(task.getID)) {
         print(task);
       }
     } else if (taskLabels.length === 0) {

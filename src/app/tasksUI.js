@@ -10,7 +10,7 @@ const tasksUI = () => {
     add(title) {
       todoList.push(todoFactory(title));
     },
-    getList: () => [...todoList],
+    getList: todoList,
     setPriority: (todoIndex, priorityIndex) =>
       setPriority(todoList[todoIndex], priorityIndex),
     setStatus: (todoIndex, statusIndex) =>
@@ -18,7 +18,7 @@ const tasksUI = () => {
     remove: (index) => removeInstance(todoList, index),
     tasksToComplete: tasksToComplete(todoList),
     removeByID: (taskID) => {
-      const task = todoList.find((task2) => task2.getID() === taskID);
+      const task = todoList.find((task2) => task2.getID === taskID);
       const index = todoList.indexOf(task);
       todoList.splice(index, 1);
     },

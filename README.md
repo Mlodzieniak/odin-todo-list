@@ -23,3 +23,13 @@ App stores Projects, Todo's and users as objects.
 All of them can be created with factories.
 
 Być może wystarczy zrobić dom funkcje która zamiast dodawać divy będzie dodawała tyle divów ile jest pozycji w array 'projects'
+
+THings that I need to store in localStorage:
+-project name
+-project creation date
+-list of tasks:
+        -task name
+        -task creation date
+        -status
+        -task deadline
+        -comment

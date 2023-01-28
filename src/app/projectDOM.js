@@ -43,15 +43,15 @@ const projectDom = () => {
   projectsWrapper.appendChild(newProjectBTN);
 
   // DUMMY's
-  const event = new Event("click");
-  newProjectBTN.dispatchEvent(event);
-  newProjectName.value = "Kup mleko";
-  acceptBTN.dispatchEvent(event);
-  newProjectBTN.dispatchEvent(event);
-  newProjectName.value = "Idz do kina";
-  acceptBTN.dispatchEvent(event);
-  newProjectBTN.dispatchEvent(event);
-  newProjectName.value = "Bieganie";
-  acceptBTN.dispatchEvent(event);
+  // const event = new Event("click");
+  // newProjectBTN.dispatchEvent(event);
+  // newProjectName.value = "Kup mleko";
+  // acceptBTN.dispatchEvent(event);
+  // newProjectBTN.dispatchEvent(event);
+  // newProjectName.value = "Idz do kina";
+  // acceptBTN.dispatchEvent(event);
+  // newProjectBTN.dispatchEvent(event);
+  // newProjectName.value = "Bieganie";
+  // acceptBTN.dispatchEvent(event);
 };
 export default projectDom;

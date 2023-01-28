@@ -4,11 +4,12 @@ import isStringLengthValid from "./isStringLengthValid";
 import generateRandomString from "./randomString";
 import setStatus from "./setStatus";
 
-const todoFactory = (name) => {
+const todoFactory = (name, parentProject) => {
   let title = name;
   let description = "";
   const creationDate = formatISO9075(new Date());
   const taskID = generateRandomString(15);
+  const referenceID = parentProject;
   let deadlineDate = null;
   // new created todo's get default priority low
   const priority = {
@@ -29,21 +30,20 @@ const todoFactory = (name) => {
       }
     },
     setDescription(newDesc) {
-      if (isStringLengthValid(newDesc, 500)) {
-        description = newDesc;
-      }
+      description = newDesc;
     },
     setDeadlineDate(newDeadLineDate) {
       deadlineDate = newDeadLineDate;
     },
     setStatus: (newStatus) => setStatus(status, newStatus),
-    getTitle: () => title,
-    getDescription: () => description,
-    getCreationDate: () => creationDate,
-    getDeadlineDate: () => deadlineDate,
-    getPriority: () => priority,
-    getStatus: () => status,
-    getID: () => taskID,
+    getTitle: title,
+    getDescription: description,
+    getCreationDate: creationDate,
+    getDeadlineDate: deadlineDate,
+    getPriority: priority,
+    getStatus: status,
+    getID: taskID,
+    getReferenceID: referenceID,
   };
 };
 export default todoFactory;

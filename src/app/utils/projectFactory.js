@@ -14,9 +14,12 @@ const projectFactory = (name) => {
         projectName = newName;
       }
     },
-    getProjectName: () => projectName,
-    getCreationDate: () => creationDate,
-    getID: () => projectID,
+    // getProjectName: () => projectName,
+    // getCreationDate: () => creationDate,
+    // getID: () => projectID,
+    getProjectName: projectName,
+    getCreationDate: creationDate,
+    getID: projectID,
     tasksUI: tasksUI(),
   };
 };

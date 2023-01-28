@@ -2,10 +2,11 @@ import projectsUI from "../projectsUI";
 import taskDom from "../taskDOM";
 
 const projects = projectsUI.getProjects;
+// localStorage.setItem("projets", JSON.stringify(projects));
 const projectsList = document.querySelector(".projects-list");
 const printProjects = () => {
   function print(project) {
-    localStorage.setItem(project.getID(), project.getProjectName);
+    localStorage.setItem(project.getID, JSON.stringify(project));
 
     const label = document.createElement("div");
     const projectName = document.createElement("div");
@@ -24,10 +25,10 @@ const printProjects = () => {
     projectDataContainer.classList.add("project-data-container");
     projectButtons.classList.add("project-buttons");
 
-    projectName.textContent = `${project.getProjectName()}`;
-    projectCreationDate.innerHTML = `Created: <span>${project.getCreationDate()}</span>`;
+    projectName.textContent = `${project.getProjectName}`;
+    projectCreationDate.innerHTML = `Created: <span>${project.getCreationDate}</span>`;
     taskCounter.innerHTML = `Todo's: <span>${project.tasksUI.tasksToComplete}</span>`;
-    label.setAttribute("data-id", project.getID());
+    label.setAttribute("data-id", project.getID);
     projectsList.appendChild(label);
 
     removeBTN.innerHTML = "\u274C";
@@ -39,13 +40,12 @@ const printProjects = () => {
 
     label.append(projectDataContainer, projectButtons);
     removeBTN.addEventListener("click", () => {
-      projectsUI.removeByID(project.getID());
+      projectsUI.removeByID(project.getID);
       projectsList.removeChild(label);
     });
     viewTasksBTN.addEventListener("click", () => {
       taskDom(project);
     });
-    localStorage.setItem(project.getID(), project);
   }
 
   projects.forEach((project) => {
@@ -56,7 +56,7 @@ const printProjects = () => {
       projectLabels.forEach((projectLabel) => {
         idContainer.push(projectLabel.dataset.id);
       });
-      if (!idContainer.includes(project.getID())) {
+      if (!idContainer.includes(project.getID)) {
         print(project);
       }
     } else if (projectLabels.length === 0) {

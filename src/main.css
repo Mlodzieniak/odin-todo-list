@@ -187,6 +187,7 @@ body {
     /* height: calc(90% - 60px); */
     /* opacity: 0.5; */
     display: grid;
+    gap: 1rem;
     grid-template-columns: 2fr 5fr;
     padding: 0.8rem 0.5rem;
     box-sizing: border-box;
@@ -321,9 +322,22 @@ body {
 
 .project-content {
     display: grid;
-    gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 'todo doing done';
+    /* display: flex; */
+    gap: 1rem;
+}
 
+.doing-list {
+    grid-area: todo;
+}
+
+.doing-list {
+    grid-area: doing;
+}
+
+.done-list {
+    grid-area: done;
 }
 
 

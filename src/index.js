@@ -1,6 +1,7 @@
 import "./main.css";
-import projectsUI from "./app/projectsUI";
 import projectDom from "./app/projectDOM";
+import storage from "./app/storage";
 
 projectDom();
+// storage();
 // localStorage.getItem("projects");

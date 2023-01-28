@@ -1,4 +1,3 @@
-import tasksUI from "./tasksUI";
 import printTasks from "./domMethods/printTasks";
 
 // const newProjectBTN = document.querySelector(".new-project-btn");
@@ -43,9 +42,10 @@ const taskDom = (project) => {
   acceptBTN.classList.add("new-project-btn");
   nameError.textContent = "Name should have between 3 and 30 characters.";
 
-  tasksWrapper.appendChild(doneTasks);
-  tasksWrapper.appendChild(doingTasks);
-  tasksWrapper.appendChild(todoTasks);
+  // tasksWrapper.appendChild(doneTasks);
+  // tasksWrapper.appendChild(doingTasks);
+  // tasksWrapper.appendChild(todoTasks);
+  tasksWrapper.append(todoTasks, doingTasks, doneTasks);
 
   newTaskBTN.addEventListener("click", () => {
     todoTasks.appendChild(newTaskName);
@@ -56,7 +56,7 @@ const taskDom = (project) => {
     if (newTaskName.value.length < 3 || newTaskName.value.length > 30) {
       todoTasks.insertBefore(nameError, newTaskName);
     } else {
-      project.tasksUI.add(newTaskName.value);
+      project.tasksUI.add(newTaskName.value, project.getID);
       printTasks(project);
       todoTasks.removeChild(newTaskName);
       todoTasks.removeChild(acceptBTN);

@@ -15,13 +15,13 @@ const projectsUI = () => {
       }
     },
     removeByID: (projectID) => {
-      const found = projects.find((project) => project.getID() === projectID);
+      const found = projects.find((project) => project.getID === projectID);
       const index = projects.indexOf(found);
       projects.splice(index, 1);
     },
     getProjects: projects,
     getProjectByID: (projectID) =>
-      projects.find((project) => project.getID() === projectID),
+      projects.find((project) => project.getID === projectID),
   };
 };
 export default projectsUI();
