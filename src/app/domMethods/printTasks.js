@@ -105,6 +105,7 @@ const printTasks = (project) => {
         taskDescription,
         saveBTN
       );
+
       label.setAttribute("style", "gap: 0.5rem");
       const optionsList = document.getElementById("status");
       optionsList.selectedIndex = task.getStatus().index;
@@ -112,18 +113,25 @@ const printTasks = (project) => {
       buttons.replaceChild(hideInfoBTN, viewInfoBTN);
       if (task.getDeadlineDate() !== null) {
         label.replaceChild(taskDeadline, taskSetDeadline);
+        label.replaceChild(taskDeadlineLabel, taskSetDeadlineLabel);
       }
     });
     hideInfoBTN.addEventListener("click", () => {
       label.setAttribute("style", "gap: 0rem");
       label.removeChild(taskCreationDateLabel);
       label.removeChild(taskCreationDate);
-      label.removeChild(taskSetDeadline);
+      if (taskSetDeadline.parentNode === label) {
+        label.removeChild(taskSetDeadlineLabel);
+        label.removeChild(taskSetDeadline);
+      }
       label.removeChild(taskDescription);
       label.removeChild(progressBTN);
       label.removeChild(statusList);
       label.removeChild(statusListLabel);
-      label.removeChild(taskSetDeadlineLabel);
+      if (taskDeadline.parentNode === label) {
+        label.removeChild(taskDeadlineLabel);
+        label.removeChild(taskDeadline);
+      }
       label.removeChild(saveBTN);
       buttons.replaceChild(viewInfoBTN, hideInfoBTN);
     });

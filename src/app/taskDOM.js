@@ -43,9 +43,10 @@ const taskDom = (project) => {
   acceptBTN.classList.add("new-project-btn");
   nameError.textContent = "Name should have between 3 and 30 characters.";
 
-  tasksWrapper.appendChild(todoTasks);
-  tasksWrapper.appendChild(doingTasks);
   tasksWrapper.appendChild(doneTasks);
+  tasksWrapper.appendChild(doingTasks);
+  tasksWrapper.appendChild(todoTasks);
+
   newTaskBTN.addEventListener("click", () => {
     todoTasks.appendChild(newTaskName);
     todoTasks.appendChild(acceptBTN);
