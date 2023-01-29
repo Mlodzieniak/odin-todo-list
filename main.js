@@ -1502,7 +1502,6 @@ const taskDom = (project) => {
 
   newTaskName.setAttribute("type", "text");
   newTaskName.setAttribute("placeholder", "task's name");
-  newTaskName.value = "TASK";
   newTaskName.classList.add("input-text");
 
   newTaskBTN.textContent = "+ New task";
