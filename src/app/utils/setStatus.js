@@ -18,7 +18,6 @@ function setStatus(status, statusIndex) {
   ];
 
   if (statusIndex > -1 && statusIndex < 3) {
-    console.log(statusIndex);
     const todoStatus = status;
     todoStatus.color = statusList[statusIndex].color;
     todoStatus.toString = statusList[statusIndex].toString;

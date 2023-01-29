@@ -29,21 +29,37 @@ const todoFactory = (name, parentProject) => {
         title = newTitle;
       }
     },
-    setDescription(newDesc) {
+    set setDescription(newDesc) {
       description = newDesc;
     },
-    setDeadlineDate(newDeadLineDate) {
+    set setDeadlineDate(newDeadLineDate) {
       deadlineDate = newDeadLineDate;
     },
     setStatus: (newStatus) => setStatus(status, newStatus),
-    getTitle: title,
-    getDescription: description,
-    getCreationDate: creationDate,
-    getDeadlineDate: deadlineDate,
-    getPriority: priority,
-    getStatus: status,
-    getID: taskID,
-    getReferenceID: referenceID,
+    get getTitle() {
+      return title;
+    },
+    get getDescription() {
+      return description;
+    },
+    get getCreationDate() {
+      return creationDate;
+    },
+    get getDeadlineDate() {
+      return deadlineDate;
+    },
+    get getPriority() {
+      return priority;
+    },
+    get getStatus() {
+      return status;
+    },
+    get getID() {
+      return taskID;
+    },
+    get getReferenceID() {
+      return referenceID;
+    },
   };
 };
 export default todoFactory;

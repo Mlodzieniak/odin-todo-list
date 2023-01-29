@@ -7,8 +7,8 @@ import tasksToComplete from "./utils/tasksToComplete";
 const tasksUI = () => {
   const todoList = [];
   return {
-    add(title) {
-      todoList.push(todoFactory(title));
+    add(title, refID) {
+      todoList.push(todoFactory(title, refID));
     },
     getList: todoList,
     setPriority: (todoIndex, priorityIndex) =>

@@ -72,7 +72,7 @@ const printTasks = (project) => {
     taskCreationDateLabel.innerHTML = "Creation date:";
     taskCreationDate.innerHTML = `${task.getCreationDate}`;
     taskDeadlineLabel.innerHTML = "Deadline:";
-    // taskDeadline.innerHTML = `${task.getDeadlineDate}`;
+    taskDeadline.innerHTML = `${task.getDeadlineDate}`;
     taskSetDeadlineLabel.innerHTML = "Set deadline:";
     statusListLabel.innerHTML = "Status:";
     taskDescription.value = task.getDescription;
@@ -107,7 +107,8 @@ const printTasks = (project) => {
         taskDescription,
         saveBTN
       );
-
+      console.log(task.getReferenceID);
+      console.log(task);
       label.setAttribute("style", "gap: 0.5rem");
       const optionsList = document.getElementById("status");
       optionsList.selectedIndex = task.getStatus.index;
@@ -146,10 +147,10 @@ const printTasks = (project) => {
     });
     saveBTN.addEventListener("click", () => {
       if (taskDescription.value.length !== 0) {
-        task.setDescription(taskDescription.value);
+        task.setDescription = taskDescription.value;
       }
       if (taskSetDeadline.value.length > 0) {
-        task.setDeadlineDate(taskSetDeadline.value);
+        task.setDeadlineDate = taskSetDeadline.value;
         const newDate = task.getDeadlineDate;
         label.replaceChild(taskDeadlineLabel, taskSetDeadlineLabel);
         label.replaceChild(taskDeadline, taskSetDeadline);
